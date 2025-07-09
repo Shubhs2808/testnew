@@ -3,10 +3,14 @@
   "mappedGuid" : "90784666-994e-4f17-b47f-f459611c82be",
   "counter" : 0,
   "additionalMapping" : { }
-},
-{
+}, {
+  "originalGuid" : "71e79d23-a399-4f29-8b7b-dd903f5fa08c",
+  "mappedGuid" : "35f71806-b2ca-4082-a01d-2409ba173b0a",
+  "counter" : 0,
+  "additionalMapping" : { }
+}, {
   "originalGuid" : "2e3376fe-7e7e-4120-beac-a8e967ec802c",
   "mappedGuid" : "34214b68-e616-47a0-be4b-a37592351ee7",
   "counter" : 0,
   "additionalMapping" : { }
-}]
+} ]
