@@ -1,0 +1,27 @@
+guid: f350f78f-b7c1-4a37-b2a6-e927476a631f
+table:
+  name: PRODUCT_STATUS
+  db: DB_CASESTUDY
+  schema: PUBLIC
+  db_table: PRODUCT_STATUS
+  connection:
+    name: Case_study_sa
+    fqn: 2e3376fe-7e7e-4120-beac-a8e967ec802c
+  columns:
+  - name: PRODUCT_ID
+    db_column_name: PRODUCT_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: STATUS
+    db_column_name: STATUS
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  properties:
+    sage_config:
+      is_sage_enabled: false
