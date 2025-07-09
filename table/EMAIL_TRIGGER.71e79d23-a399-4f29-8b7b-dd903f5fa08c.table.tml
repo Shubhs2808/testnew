@@ -1,0 +1,52 @@
+guid: 71e79d23-a399-4f29-8b7b-dd903f5fa08c
+table:
+  name: EMAIL_TRIGGER
+  db: DB_CASESTUDY
+  schema: PUBLIC
+  db_table: EMAIL_TRIGGER
+  connection:
+    name: Case_study_sa
+    fqn: 2e3376fe-7e7e-4120-beac-a8e967ec802c
+  columns:
+  - name: SETTLEMENTAMOUNT
+    db_column_name: SETTLEMENTAMOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: REWARDSBALANCE
+    db_column_name: REWARDSBALANCE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CONSULTANTEMAIL
+    db_column_name: CONSULTANTEMAIL
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - name: SINNUMBER
+    db_column_name: SINNUMBER
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: DAYSTILLQUOTEEXPIRE
+    db_column_name: DAYSTILLQUOTEEXPIRE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  properties:
+    sage_config:
+      is_sage_enabled: false
