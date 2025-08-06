@@ -4,7 +4,7 @@ liveboard:
   visualizations:
   - id: Viz_1
     answer:
-      name: Total demo 2 by dayofweek
+      name: 'Total demo 2 '
       tables:
       - id: case_study_worksheet
         name: case_study_worksheet
@@ -37,6 +37,7 @@ liveboard:
         client_state: ""
         client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {},\"responsiveLayoutPreference\": \"USER_PREFERRED_ON\",\"chartSpecific\": {\"dataFieldArea\": \"column\"}},\"columnProperties\": [{\"columnId\": \"dayofweek\",\"columnProperty\": {}},{\"columnId\": \"Total demo 2\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"3df9d417-764c-4d6c-8c9b-e9fdde40e9c0\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total demo 2\"],\"isOpposite\": false}},{\"id\": \"b6befe8b-8f11-4639-9006-d712fbfe3076\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"dayofweek\"]}}]}"
       display_mode: CHART_MODE
+      dynamic_name: 'Total demo 2 '
     viz_guid: d3346fc2-a056-40d5-8d28-0290a7843d9c
   - id: Viz_2
     answer:
