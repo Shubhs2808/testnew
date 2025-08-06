@@ -1,0 +1,55 @@
+guid: 81365cce-beab-4012-a110-0b80164a9fe3
+table:
+  name: F_SALES
+  db: DB_CASESTUDY
+  schema: SA_CASESTUDY
+  db_table: F_SALES
+  connection:
+    name: Case_study_sa
+    fqn: d119ead1-c43f-457b-a56a-54ca5b2a3a67
+  columns:
+  - name: DATE_ID
+    db_column_name: DATE_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      is_additive: true
+    db_column_properties:
+      data_type: INT64
+  - name: PRODUCT_ID
+    db_column_name: PRODUCT_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: QUANTITY_SOLD
+    db_column_name: QUANTITY_SOLD
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  joins_with:
+  - name: F_SALES_to_D_DATE
+    destination:
+      name: D_DATE
+      fqn: 557eb162-cbc8-43f3-902f-239270def89e
+    "on": "[F_SALES::DATE_ID] = [D_DATE::DATE_ID]"
+    type: RIGHT_OUTER
+  - name: F_SALES_to_D_PRODUCTS
+    destination:
+      name: D_PRODUCT
+      fqn: 6c4f76c9-8b43-4f06-ad0e-a59f81d03ff5
+    "on": "[F_SALES::PRODUCT_ID] = [D_PRODUCT::PRODUCT_ID]"
+    type: RIGHT_OUTER
+  - name: F_SALES_to_OTHERDATE
+    destination:
+      name: OTHERDATE
+      fqn: acefdc55-f4c9-4070-b095-f875783718e7
+    "on": "[F_SALES::DATE_ID] = [OTHERDATE::ID]"
+    type: INNER
+  properties:
+    sage_config:
+      is_sage_enabled: false
