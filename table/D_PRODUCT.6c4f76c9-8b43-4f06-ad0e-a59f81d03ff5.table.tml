@@ -1,0 +1,65 @@
+guid: 6c4f76c9-8b43-4f06-ad0e-a59f81d03ff5
+table:
+  name: D_PRODUCT
+  db: DB_CASESTUDY
+  schema: SA_CASESTUDY
+  db_table: D_PRODUCTS
+  connection:
+    name: Case_study_sa
+    fqn: d119ead1-c43f-457b-a56a-54ca5b2a3a67
+  columns:
+  - name: Product
+    description: name of product
+    db_column_name: PRODUCT_NAME
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - product name
+    db_column_properties:
+      data_type: VARCHAR
+  - name: PRODUCT_ID
+    db_column_name: PRODUCT_ID
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: INT64
+  - name: PRODUCT_TYPE
+    db_column_name: PRODUCT_TYPE
+    properties:
+      column_type: ATTRIBUTE
+      custom_order:
+      - food
+      - non-food
+    db_column_properties:
+      data_type: VARCHAR
+  - name: UNIT_COST_USD
+    db_column_name: UNIT_COST_USD
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: UNIT_RETAIL_PRICE_USD
+    db_column_name: UNIT_RETAIL_PRICE_USD
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  rls_rules:
+    tables:
+    - name: D_PRODUCT
+      fqn: 6c4f76c9-8b43-4f06-ad0e-a59f81d03ff5
+    table_paths:
+    - id: D_PRODUCT_1
+      table: D_PRODUCT
+      column:
+      - Product
+    rules:
+    - name: rls
+      expr: "ts_username = [D_PRODUCT_1::Product] "
+  properties:
+    sage_config:
+      is_sage_enabled: true

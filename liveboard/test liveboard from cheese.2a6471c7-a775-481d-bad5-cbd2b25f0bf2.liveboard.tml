@@ -1,0 +1,129 @@
+guid: 2a6471c7-a775-481d-bad5-cbd2b25f0bf2
+liveboard:
+  name: test liveboard from cheese
+  visualizations:
+  - id: Viz_1
+    answer:
+      name: Total demo 2 by dayofweek
+      tables:
+      - id: case_study_worksheet
+        name: case_study_worksheet
+        fqn: 7e675e2f-93a5-4051-9c1e-2d8ed622554b
+      search_query: "[demo 2] [dayofweek]"
+      answer_columns:
+      - name: Total demo 2
+      - name: dayofweek
+      table:
+        table_columns:
+        - column_id: Total demo 2
+          show_headline: false
+        - column_id: dayofweek
+          show_headline: false
+        ordered_column_ids:
+        - dayofweek
+        - Total demo 2
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"columnProperties\": [{\"columnId\": \"dayofweek\",\"columnProperty\": {}},{\"columnId\": \"Total demo 2\",\"columnProperty\": {}}]}"
+      chart:
+        type: COLUMN
+        chart_columns:
+        - column_id: Total demo 2
+        - column_id: dayofweek
+        axis_configs:
+        - x:
+          - dayofweek
+          "y":
+          - Total demo 2
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {},\"responsiveLayoutPreference\": \"USER_PREFERRED_ON\",\"chartSpecific\": {\"dataFieldArea\": \"column\"}},\"columnProperties\": [{\"columnId\": \"dayofweek\",\"columnProperty\": {}},{\"columnId\": \"Total demo 2\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"3df9d417-764c-4d6c-8c9b-e9fdde40e9c0\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total demo 2\"],\"isOpposite\": false}},{\"id\": \"b6befe8b-8f11-4639-9006-d712fbfe3076\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"dayofweek\"]}}]}"
+      display_mode: CHART_MODE
+    viz_guid: d3346fc2-a056-40d5-8d28-0290a7843d9c
+  - id: Viz_2
+    answer:
+      name: Total Sales by Product Name
+      tables:
+      - id: case_study_worksheet
+        name: case_study_worksheet
+        fqn: 7e675e2f-93a5-4051-9c1e-2d8ed622554b
+      search_query: "[Product] [Sales]"
+      answer_columns:
+      - name: Product
+      - name: Total Sales
+      table:
+        table_columns:
+        - column_id: Product
+          show_headline: false
+        - column_id: Total Sales
+          show_headline: false
+        ordered_column_ids:
+        - Product
+        - Total Sales
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"columnProperties\": [{\"columnId\": \"Product\",\"columnProperty\": {}},{\"columnId\": \"Total Sales\",\"columnProperty\": {}}]}"
+      chart:
+        type: COLUMN
+        chart_columns:
+        - column_id: Product
+        - column_id: Total Sales
+        axis_configs:
+        - x:
+          - Product
+          "y":
+          - Total Sales
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {},\"responsiveLayoutPreference\": \"USER_PREFERRED_ON\",\"chartSpecific\": {\"dataFieldArea\": \"column\"}},\"columnProperties\": [{\"columnId\": \"Product\",\"columnProperty\": {}},{\"columnId\": \"Total Sales\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"708f57ea-47d3-4103-b449-28ae18fdbc4f\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Sales\"],\"isOpposite\": false}},{\"id\": \"7933bb7c-3d70-4c15-aaa6-de62fd56b1cf\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Product\"]}}]}"
+      display_mode: CHART_MODE
+    viz_guid: d6e9c981-b01c-4235-bdf3-2449eab19b59
+  filters:
+  - column:
+    - Product
+    is_mandatory: false
+    is_single_value: false
+    display_name: ""
+  layout:
+    tiles:
+    - visualization_id: Viz_1
+      x: 0
+      "y": 0
+      height: 8
+      width: 6
+    - visualization_id: Viz_2
+      x: 6
+      "y": 0
+      height: 8
+      width: 6
+  parameter_overrides:
+  - key: 028dc081-a901-46ee-bebd-4ad5cbc92909
+    value:
+      name: case_study_worksheet::b
+  ordered_chips:
+  - name: case_study_worksheet::b
+    type: PARAMETER
+  - name: Product
+    type: FILTER
+  views:
+  - view_guid: de9efdea-2cbe-45b4-aa8c-5397714acb1e
+    name: test
+    view_filters:
+    - column:
+      - Product
+      oper: in
+      values:
+      - curd
+    is_public: true
+    view_parameters:
+    - name: case_study_worksheet::b
+      id: 028dc081-a901-46ee-bebd-4ad5cbc92909
+  - view_guid: 14b58958-3482-41a7-a767-8b7ec424b23f
+    name: test2
+    view_filters:
+    - column:
+      - Product
+      oper: in
+      values:
+      - curd
+      - cheese
+    is_public: true
+    view_parameters:
+    - name: case_study_worksheet::b
+      id: 028dc081-a901-46ee-bebd-4ad5cbc92909
