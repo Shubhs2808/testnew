@@ -46,7 +46,7 @@ liveboard:
       - id: case_study_worksheet
         name: case_study_worksheet
         fqn: 7e675e2f-93a5-4051-9c1e-2d8ed622554b
-      search_query: "[Product] [Sales]"
+      search_query: "[Product] [Sales] [Product].cheese"
       answer_columns:
       - name: Product
       - name: Total Sales
