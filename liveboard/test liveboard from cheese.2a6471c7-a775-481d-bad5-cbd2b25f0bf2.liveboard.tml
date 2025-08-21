@@ -75,6 +75,12 @@ liveboard:
         client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {},\"responsiveLayoutPreference\": \"USER_PREFERRED_ON\",\"chartSpecific\": {\"dataFieldArea\": \"column\"}},\"columnProperties\": [{\"columnId\": \"Product\",\"columnProperty\": {}},{\"columnId\": \"Total Sales\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"708f57ea-47d3-4103-b449-28ae18fdbc4f\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Sales\"],\"isOpposite\": false}},{\"id\": \"7933bb7c-3d70-4c15-aaa6-de62fd56b1cf\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Product\"]}}]}"
       display_mode: CHART_MODE
     viz_guid: d6e9c981-b01c-4235-bdf3-2449eab19b59
+  filters:
+  - column:
+    - Product
+    is_mandatory: false
+    is_single_value: false
+    display_name: ""
   layout:
     tiles:
     - visualization_id: Viz_1
@@ -94,15 +100,30 @@ liveboard:
   ordered_chips:
   - name: case_study_worksheet::b
     type: PARAMETER
+  - name: Product
+    type: FILTER
   views:
   - view_guid: de9efdea-2cbe-45b4-aa8c-5397714acb1e
     name: test
+    view_filters:
+    - column:
+      - Product
+      oper: in
+      values:
+      - curd
     is_public: true
     view_parameters:
     - name: case_study_worksheet::b
       id: 028dc081-a901-46ee-bebd-4ad5cbc92909
   - view_guid: 14b58958-3482-41a7-a767-8b7ec424b23f
     name: test2
+    view_filters:
+    - column:
+      - Product
+      oper: in
+      values:
+      - curd
+      - cheese
     is_public: true
     view_parameters:
     - name: case_study_worksheet::b
