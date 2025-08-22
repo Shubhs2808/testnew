@@ -1,0 +1,257 @@
+guid: 7e675e2f-93a5-4051-9c1e-2d8ed622554b
+model:
+  name: case_study_worksheet
+  description: |2-
+
+    This worksheet contains data that can be used to understand sales performance of a variety of products. It contains information about the date, product, quantity purchased/sold, sales, type, unit costs/retail prices, and other metrics such as inventory and demo. This data can be used to analyze product performance, identify sales trends, and understand how pricing affects sales. It can also be used to forecast future sales, identify potential problems and opportunities, and optimize store operations. (AI generated)
+  model_tables:
+  - name: D_PRODUCT
+    fqn: 6c4f76c9-8b43-4f06-ad0e-a59f81d03ff5
+  - name: F_SALES
+    fqn: 81365cce-beab-4012-a110-0b80164a9fe3
+    joins:
+    - with: D_DATE
+      referencing_join: F_SALES_to_D_DATE
+    - with: D_PRODUCT
+      referencing_join: F_SALES_to_D_PRODUCTS
+    - with: PRODUCT_STATUS1
+      'on': '[F_SALES::PRODUCT_ID] = [PRODUCT_STATUS1::PRODUCT_ID]'
+      type: INNER
+      cardinality: MANY_TO_ONE
+  - name: F_INVENTORY
+    fqn: 77481211-7927-43c7-8d32-ab5c5ab6dced
+    joins:
+    - with: D_DATE
+      referencing_join: F_inventory join_to d_date
+    - with: D_PRODUCT
+      referencing_join: F_INVENTORY_to_D_PRODUCTS
+  - name: D_DATE
+    fqn: 557eb162-cbc8-43f3-902f-239270def89e
+  - name: PRODUCT_STATUS1
+    fqn: 4be02467-402c-4186-9dfb-a6683ac1290d
+  - name: A_PURCHASE_ORDERS_FACT
+    fqn: 682e9d64-311c-45d4-9978-3089b34d630e
+    joins:
+    - with: D_PRODUCT
+      'on': '[A_PURCHASE_ORDERS_FACT::PRODUCT_ID] = [D_PRODUCT::PRODUCT_ID]'
+      type: INNER
+      cardinality: MANY_TO_ONE
+  formulas:
+  - id: formula_dayofweek
+    name: dayofweek
+    expr: day_of_week ( [D_DATE::DATE] )
+  - id: formula_demo 2
+    name: demo 2
+    expr: '[D_PRODUCT::UNIT_RETAIL_PRICE_USD] + [b]'
+  - id: formula_inventory
+    name: inventory
+    expr: '[D_PRODUCT::UNIT_COST_USD] * [F_INVENTORY::QUANTITY_PURCHASED]'
+  - id: formula_percen
+    name: percen
+    expr: sum ( [formula_Sales] ) / group_aggregate ( sum ( [formula_Sales] ) , { } , { } )
+  - id: formula_Sales
+    name: Sales
+    expr: '[D_PRODUCT::UNIT_RETAIL_PRICE_USD] * [F_SALES::QUANTITY_SOLD]'
+  columns:
+  - name: Product
+    description: abc
+    column_id: D_PRODUCT::Product
+    properties:
+      column_type: ATTRIBUTE
+      is_attribution_dimension: false
+      synonym_type: USER_DEFINED
+      custom_order:
+      - cookies
+      - soap
+      - cheese
+      - plates
+      - napkins
+      - eggs
+      - ham
+      - curd
+  - name: fs_Product Id
+    column_id: F_SALES::PRODUCT_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Total Cost
+    column_id: A_PURCHASE_ORDERS_FACT::TOTAL_COST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Purchase Order Id
+    column_id: A_PURCHASE_ORDERS_FACT::PURCHASE_ORDER_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: type
+    description: types of product food or non food
+    column_id: D_PRODUCT::PRODUCT_TYPE
+    properties:
+      column_type: ATTRIBUTE
+      synonym_type: USER_DEFINED
+      custom_order:
+      - non-food
+      - food
+  - name: Product Id
+    column_id: F_INVENTORY::PRODUCT_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      synonyms:
+      - Item Number
+      - Product Number
+      spotiq_preference: EXCLUDE
+      synonym_type: AUTO_GENERATED
+  - name: Product Id1
+    column_id: PRODUCT_STATUS1::PRODUCT_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Status
+    column_id: PRODUCT_STATUS1::STATUS
+    properties:
+      column_type: ATTRIBUTE
+  - name: inventory
+    formula_id: formula_inventory
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Stock
+      - Supply
+      spotiq_preference: EXCLUDE
+      synonym_type: AUTO_GENERATED
+  - name: Sales
+    formula_id: formula_Sales
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Revenue
+      - Income
+      format_pattern: +#,##0
+      synonym_type: AUTO_GENERATED
+  - name: demo 2
+    formula_id: formula_demo 2
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Sample 2
+      - Example 2
+      synonym_type: AUTO_GENERATED
+  - name: dayofweek
+    formula_id: formula_dayofweek
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      synonyms:
+      - Weekday
+      - Day of the Week
+      synonym_type: AUTO_GENERATED
+  - name: percen
+    formula_id: formula_percen
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Ratio
+      - Proportion
+      format_pattern: '#.0%'
+      synonym_type: AUTO_GENERATED
+  - name: Unit Cost Usd
+    column_id: D_PRODUCT::UNIT_COST_USD
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Unit Price Usd
+      - Unit Cost Dollar
+      synonym_type: AUTO_GENERATED
+  - name: Unit Retail Price Usd
+    column_id: D_PRODUCT::UNIT_RETAIL_PRICE_USD
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Retail Price Usd
+      - Retail Cost Dollar
+      synonym_type: AUTO_GENERATED
+  - name: Quantity Sold
+    column_id: F_SALES::QUANTITY_SOLD
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Amount Sold
+      - Number Sold
+      synonym_type: AUTO_GENERATED
+  - name: Date Id
+    column_id: D_DATE::DATE_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      synonyms:
+      - Date Number
+      - Date Code
+      synonym_type: AUTO_GENERATED
+  - name: Date
+    column_id: D_DATE::DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      synonyms:
+      - Day
+      calendar: TP calendar
+      format_pattern: YYYY/MM/DD
+      synonym_type: AUTO_GENERATED
+  - name: Is Holiday
+    column_id: D_DATE::IS_HOLIDAY
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      synonyms:
+      - Vacation
+      - Leave
+      synonym_type: AUTO_GENERATED
+  - name: Quantity Purchased
+    column_id: F_INVENTORY::QUANTITY_PURCHASED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Quantity Bought
+      - Quantity Acquired
+      synonym_type: AUTO_GENERATED
+  - name: Vendor Id
+    column_id: A_PURCHASE_ORDERS_FACT::VENDOR_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Vendor Id Varchar
+    column_id: A_PURCHASE_ORDERS_FACT::VENDOR_ID_VARCHAR
+    properties:
+      column_type: ATTRIBUTE
+  properties:
+    is_bypass_rls: false
+    join_progressive: true
+    sage_config:
+      is_sage_enabled: true
+  parameters:
+  - id: 028dc081-a901-46ee-bebd-4ad5cbc92909
+    name: b
+    data_type: INT64
+    default_value: '1'
+    description: ''

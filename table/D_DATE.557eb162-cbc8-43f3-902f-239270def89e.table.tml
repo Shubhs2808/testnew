@@ -1,0 +1,36 @@
+guid: 557eb162-cbc8-43f3-902f-239270def89e
+table:
+  name: D_DATE
+  db: DB_CASESTUDY
+  schema: SA_CASESTUDY
+  db_table: D_DATE
+  connection:
+    name: Case_study_sa
+    fqn: d119ead1-c43f-457b-a56a-54ca5b2a3a67
+  columns:
+  - name: DATE_ID
+    db_column_name: DATE_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: DATE
+    db_column_name: DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: IS_HOLIDAY
+    db_column_name: IS_HOLIDAY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  properties:
+    sage_config:
+      is_sage_enabled: false
