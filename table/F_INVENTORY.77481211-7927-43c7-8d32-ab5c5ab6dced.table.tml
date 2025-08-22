@@ -1,0 +1,50 @@
+guid: 77481211-7927-43c7-8d32-ab5c5ab6dced
+table:
+  name: F_INVENTORY
+  db: DB_CASESTUDY
+  schema: SA_CASESTUDY
+  db_table: F_INVENTORY
+  connection:
+    name: Case_study_sa
+    fqn: d119ead1-c43f-457b-a56a-54ca5b2a3a67
+  columns:
+  - name: DATE_ID
+    db_column_name: DATE_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: PRODUCT_ID
+    db_column_name: PRODUCT_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: QUANTITY_PURCHASED
+    db_column_name: QUANTITY_PURCHASED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  joins_with:
+  - name: F_INVENTORY_to_D_PRODUCTS
+    destination:
+      name: D_PRODUCT
+      fqn: 6c4f76c9-8b43-4f06-ad0e-a59f81d03ff5
+    "on": "[F_INVENTORY::PRODUCT_ID] = [D_PRODUCT::PRODUCT_ID]"
+    type: RIGHT_OUTER
+  - name: F_inventory join_to d_date
+    destination:
+      name: D_DATE
+      fqn: 557eb162-cbc8-43f3-902f-239270def89e
+    "on": "[F_INVENTORY::DATE_ID] = [D_DATE::DATE_ID]"
+    type: RIGHT_OUTER
+  properties:
+    sage_config:
+      is_sage_enabled: false
