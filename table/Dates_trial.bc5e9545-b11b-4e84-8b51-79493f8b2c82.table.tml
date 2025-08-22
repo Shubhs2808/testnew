@@ -1,0 +1,29 @@
+guid: bc5e9545-b11b-4e84-8b51-79493f8b2c82
+table:
+  name: Dates_trial
+  db: DB_CASESTUDY
+  schema: PUBLIC
+  db_table: FUTURE_DATES
+  connection:
+    name: Case_study_sa
+    fqn: d119ead1-c43f-457b-a56a-54ca5b2a3a67
+  columns:
+  - name: DATE_COLUMN
+    db_column_name: DATE_COLUMN
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      calendar: TP calendar
+    db_column_properties:
+      data_type: DATE
+  - name: RANDOM_VALUE
+    db_column_name: RANDOM_VALUE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  properties:
+    sage_config:
+      is_sage_enabled: false
